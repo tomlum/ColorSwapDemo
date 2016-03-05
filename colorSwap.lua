@@ -45,7 +45,7 @@ colorSwap.shader = love.graphics.newShader(
 --{{1,.2,.5,1}, {1,0,0,1}}
 --Swaps Red with {1,.2,.5,1}
 --Swaps Green with {1,0,0,1}
-function setColorSwap(swapMap)
+function colorSwap.set(swapMap)
 	colorSwap.shader:send("swapMap", 
 		swapMap[1] or {255,255,255,255}, 
 		swapMap[2] or {255,255,255,255}, 
@@ -57,6 +57,11 @@ function setColorSwap(swapMap)
 end
 
 --Place before drawing something you want to swap colors for
-function swapColors()
+function colorSwap.swap()
 	love.graphics.setShader(colorSwap.shader)
+end
+
+
+function colorSwap.finish()
+	love.graphics.setShader()
 end
