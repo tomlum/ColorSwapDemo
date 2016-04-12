@@ -18,24 +18,108 @@ colorSwap.shader = love.graphics.newShader(
 	vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords){
 
 		vec4 tc = Texel(texture, texture_coords);
-		if (tc[1] == 0 && tc[2] == 0){
-			return swapMap[0]*tc[0];
+		if (tc[3] > 0){
+			if (tc[1] == 0 && tc[2] == 0){
+				return vec4(
+				swapMap[0][0]*tc[0], 
+				swapMap[0][1]*tc[0], 
+				swapMap[0][2]*tc[0], 
+				swapMap[0][3]);
+			}
+			else if (tc[0] == 1 && tc[1]-tc[2]<.005 && tc[1]-tc[2]>-.005){
+				return vec4(
+				swapMap[0][0]+(1-swapMap[0][0])*tc[1], 
+				swapMap[0][1]+(1-swapMap[0][1])*tc[1], 
+				swapMap[0][2]+(1-swapMap[0][2])*tc[1], 
+				swapMap[0][3]);
+			}
+
+			else if (tc[0] <= 0 && tc[2] <= 0){
+				return vec4(
+				swapMap[1][0]*tc[1], 
+				swapMap[1][1]*tc[1], 
+				swapMap[1][2]*tc[1], 
+				swapMap[1][3]);
+			}
+			else if (tc[1] == 1 && tc[0]-tc[2]<.005 && tc[0]-tc[2]>-.005){
+				return vec4(
+				swapMap[1][0]+(1-swapMap[1][0])*tc[2], 
+				swapMap[1][1]+(1-swapMap[1][1])*tc[2], 
+				swapMap[1][2]+(1-swapMap[1][2])*tc[2], 
+				swapMap[1][3]);
+			}
+
+			else if (tc[1] == 0 && tc[0] == 0){
+				return vec4(
+				swapMap[2][0]*tc[2], 
+				swapMap[2][1]*tc[2], 
+				swapMap[2][2]*tc[2], 
+				swapMap[2][3]);
+			}
+			else if (tc[2] == 1 && tc[1]-tc[0]<.005  && tc[1]-tc[0]>-.005){
+				return vec4(
+				swapMap[2][0]+(1-swapMap[2][0])*tc[1], 
+				swapMap[2][1]+(1-swapMap[2][1])*tc[1], 
+				swapMap[2][2]+(1-swapMap[2][2])*tc[1], 
+				swapMap[2][3]);
+			}
+
+
+
+
+
+
+
+			else if (tc[0] == 0 && tc[1]-tc[2]<.005 && tc[1]-tc[2]>-.005){
+				return vec4(
+				swapMap[3][0]*tc[1], 
+				swapMap[3][1]*tc[1], 
+				swapMap[3][2]*tc[1], 
+				swapMap[3][3]);
+			}
+			else if (tc[1] == 1 && tc[2] == 1){
+				return vec4(
+				swapMap[3][0]+(1-swapMap[3][0])*tc[0], 
+				swapMap[3][1]+(1-swapMap[3][1])*tc[0], 
+				swapMap[3][2]+(1-swapMap[3][2])*tc[0], 
+				swapMap[3][3]);
+			}
+
+			else if (tc[1] == 0 && tc[0]-tc[2]<.005 && tc[0]-tc[2]>-.005){
+				return vec4(
+				swapMap[4][0]*tc[0], 
+				swapMap[4][1]*tc[0], 
+				swapMap[4][2]*tc[0], 
+				swapMap[4][3]);
+			}
+			else if (tc[0] == 1 && tc[2] == 1){
+				return vec4(
+				swapMap[4][0]+(1-swapMap[4][0])*tc[1], 
+				swapMap[4][1]+(1-swapMap[4][1])*tc[1], 
+				swapMap[4][2]+(1-swapMap[4][2])*tc[1], 
+				swapMap[4][3]);
+			}
+
+
+			else if (tc[2] == 0 && tc[0]-tc[1]<.005 && tc[0]-tc[1]>-.005){
+				return vec4(
+				swapMap[5][0]*tc[1], 
+				swapMap[5][1]*tc[1], 
+				swapMap[5][2]*tc[1], 
+				swapMap[5][3]);
+			}
+			else if (tc[0] == 1 && tc[1] == 1){
+				return vec4(
+				swapMap[5][0]+(1-swapMap[5][0])*tc[2], 
+				swapMap[5][1]+(1-swapMap[5][1])*tc[2], 
+				swapMap[5][2]+(1-swapMap[5][2])*tc[2], 
+				swapMap[5][3]);
+			}
 		}
-		else if (tc[0] == 0 && tc[2] == 0){
-			return swapMap[1]*tc[1];
-		}
-		else if (tc[0] == 0 && tc[1] == 0){
-			return swapMap[2]*tc[2];
-		}
-		else if (tc[0] == 0 && tc[1] == tc[2]){
-			return swapMap[3]*tc[1];
-		}
-		else if (tc[1] == 0 && tc[0] == tc[2]){
-			return swapMap[4]*tc[0];
-		}
-		else if (tc[2] == 0 && tc[0] == tc[1]){
-			return swapMap[5]*tc[0];
-		}
+
+
+
+
 		return tc;
 	}
 	]] 
@@ -45,23 +129,22 @@ colorSwap.shader = love.graphics.newShader(
 --{{1,.2,.5,1}, {1,0,0,1}}
 --Swaps Red with {1,.2,.5,1}
 --Swaps Green with {1,0,0,1}
-function colorSwap.set(swapMap)
+function colorSwap.send(swapMap)
 	colorSwap.shader:send("swapMap", 
-		swapMap[1] or {255,255,255,255}, 
-		swapMap[2] or {255,255,255,255}, 
-		swapMap[3] or {255,255,255,255}, 
-		swapMap[4] or {255,255,255,255}, 
-		swapMap[5] or {255,255,255,255}, 
-		swapMap[6] or {255,255,255,255}
+		swapMap[1] or {1,0,0,1}, 
+		swapMap[2] or {0,1,0,1}, 
+		swapMap[3] or {0,0,1,1},
+		swapMap[4] or {0,1,1,1}, 
+		swapMap[5] or {1,0,1,1}, 
+		swapMap[6] or {1,1,0,1}
 		)
 end
 
 --Place before drawing something you want to swap colors for
-function colorSwap.swap()
+function colorSwap.set()
 	love.graphics.setShader(colorSwap.shader)
 end
 
-
-function colorSwap.finish()
+function colorSwap.unset()
 	love.graphics.setShader()
 end
