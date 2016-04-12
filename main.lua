@@ -8,19 +8,19 @@ function love.load()
 	font = love.graphics.newFont(40)
 	love.graphics.setFont(font)
 	colors = {
-		{0,1,1,1},
-		{1/6,1,1,1},
-		{2/6,1,1,1},
-		{3/6,1,1,1},
-		{4/6,1,1,1},
-		{5/6,1,1,1}
+		{0,255,255,255},
+		{(1/6)*255,255,255,255},
+		{(2/6)*255,255,255,255},
+		{(3/6)*255,255,255,255},
+		{(4/6)*255,255,255,255},
+		{(5/6)*255,255,255,255}
 	}
 end
 
 function love.update()
 	for i,colors in ipairs(colors) do
-		colors[1] = colors[1] + .002
-		if colors[1]+.002 >= 1 then
+		colors[1] = colors[1] + 1
+		if colors[1]+.002 >= 255 then
 			colors[1] = 0
 		end
 	end

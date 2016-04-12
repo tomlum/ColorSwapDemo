@@ -21,47 +21,47 @@ colorSwap.shader = love.graphics.newShader(
 		if (tc[3] > 0){
 			if (tc[1] == 0 && tc[2] == 0){
 				return vec4(
-				swapMap[0][0]*tc[0], 
-				swapMap[0][1]*tc[0], 
-				swapMap[0][2]*tc[0], 
-				swapMap[0][3]);
+				swapMap[0][0]/255*tc[0], 
+				swapMap[0][1]/255*tc[0], 
+				swapMap[0][2]/255*tc[0], 
+				swapMap[0][3]/255);
 			}
 			else if (tc[0] == 1 && tc[1]-tc[2]<.005 && tc[1]-tc[2]>-.005){
 				return vec4(
-				swapMap[0][0]+(1-swapMap[0][0])*tc[1], 
-				swapMap[0][1]+(1-swapMap[0][1])*tc[1], 
-				swapMap[0][2]+(1-swapMap[0][2])*tc[1], 
-				swapMap[0][3]);
+				swapMap[0][0]/255+(1-swapMap[0][0]/255)*tc[1], 
+				swapMap[0][1]/255+(1-swapMap[0][1]/255)*tc[1], 
+				swapMap[0][2]/255+(1-swapMap[0][2]/255)*tc[1], 
+				swapMap[0][3]/255);
 			}
 
 			else if (tc[0] <= 0 && tc[2] <= 0){
 				return vec4(
-				swapMap[1][0]*tc[1], 
-				swapMap[1][1]*tc[1], 
-				swapMap[1][2]*tc[1], 
-				swapMap[1][3]);
+				swapMap[1][0]/255*tc[1], 
+				swapMap[1][1]/255*tc[1], 
+				swapMap[1][2]/255*tc[1], 
+				swapMap[1][3]/255);
 			}
 			else if (tc[1] == 1 && tc[0]-tc[2]<.005 && tc[0]-tc[2]>-.005){
 				return vec4(
-				swapMap[1][0]+(1-swapMap[1][0])*tc[2], 
-				swapMap[1][1]+(1-swapMap[1][1])*tc[2], 
-				swapMap[1][2]+(1-swapMap[1][2])*tc[2], 
-				swapMap[1][3]);
+				swapMap[1][0]/255+(1-swapMap[1][0]/255)*tc[2], 
+				swapMap[1][1]/255+(1-swapMap[1][1]/255)*tc[2], 
+				swapMap[1][2]/255+(1-swapMap[1][2]/255)*tc[2], 
+				swapMap[1][3]/255);
 			}
 
 			else if (tc[1] == 0 && tc[0] == 0){
 				return vec4(
-				swapMap[2][0]*tc[2], 
-				swapMap[2][1]*tc[2], 
-				swapMap[2][2]*tc[2], 
-				swapMap[2][3]);
+				swapMap[2][0]/255*tc[2], 
+				swapMap[2][1]/255*tc[2], 
+				swapMap[2][2]/255*tc[2], 
+				swapMap[2][3]/255);
 			}
 			else if (tc[2] == 1 && tc[1]-tc[0]<.005  && tc[1]-tc[0]>-.005){
 				return vec4(
-				swapMap[2][0]+(1-swapMap[2][0])*tc[1], 
-				swapMap[2][1]+(1-swapMap[2][1])*tc[1], 
-				swapMap[2][2]+(1-swapMap[2][2])*tc[1], 
-				swapMap[2][3]);
+				swapMap[2][0]/255+(1-swapMap[2][0]/255)*tc[1], 
+				swapMap[2][1]/255+(1-swapMap[2][1]/255)*tc[1], 
+				swapMap[2][2]/255+(1-swapMap[2][2]/255)*tc[1], 
+				swapMap[2][3]/255);
 			}
 
 
@@ -72,48 +72,48 @@ colorSwap.shader = love.graphics.newShader(
 
 			else if (tc[0] == 0 && tc[1]-tc[2]<.005 && tc[1]-tc[2]>-.005){
 				return vec4(
-				swapMap[3][0]*tc[1], 
-				swapMap[3][1]*tc[1], 
-				swapMap[3][2]*tc[1], 
-				swapMap[3][3]);
+				swapMap[3][0]/255*tc[1], 
+				swapMap[3][1]/255*tc[1], 
+				swapMap[3][2]/255*tc[1], 
+				swapMap[3][3]/255);
 			}
 			else if (tc[1] == 1 && tc[2] == 1){
 				return vec4(
-				swapMap[3][0]+(1-swapMap[3][0])*tc[0], 
-				swapMap[3][1]+(1-swapMap[3][1])*tc[0], 
-				swapMap[3][2]+(1-swapMap[3][2])*tc[0], 
-				swapMap[3][3]);
+				swapMap[3][0]/255+(1-swapMap[3][0]/255)*tc[0], 
+				swapMap[3][1]/255+(1-swapMap[3][1]/255)*tc[0], 
+				swapMap[3][2]/255+(1-swapMap[3][2]/255)*tc[0], 
+				swapMap[3][3]/255);
 			}
 
 			else if (tc[1] == 0 && tc[0]-tc[2]<.005 && tc[0]-tc[2]>-.005){
 				return vec4(
-				swapMap[4][0]*tc[0], 
-				swapMap[4][1]*tc[0], 
-				swapMap[4][2]*tc[0], 
-				swapMap[4][3]);
+				swapMap[4][0]/255*tc[0], 
+				swapMap[4][1]/255*tc[0], 
+				swapMap[4][2]/255*tc[0], 
+				swapMap[4][3]/255);
 			}
 			else if (tc[0] == 1 && tc[2] == 1){
 				return vec4(
-				swapMap[4][0]+(1-swapMap[4][0])*tc[1], 
-				swapMap[4][1]+(1-swapMap[4][1])*tc[1], 
-				swapMap[4][2]+(1-swapMap[4][2])*tc[1], 
-				swapMap[4][3]);
+				swapMap[4][0]/255+(1-swapMap[4][0]/255)*tc[1], 
+				swapMap[4][1]/255+(1-swapMap[4][1]/255)*tc[1], 
+				swapMap[4][2]/255+(1-swapMap[4][2]/255)*tc[1], 
+				swapMap[4][3]/255);
 			}
 
 
 			else if (tc[2] == 0 && tc[0]-tc[1]<.005 && tc[0]-tc[1]>-.005){
 				return vec4(
-				swapMap[5][0]*tc[1], 
-				swapMap[5][1]*tc[1], 
-				swapMap[5][2]*tc[1], 
-				swapMap[5][3]);
+				swapMap[5][0]/255*tc[1], 
+				swapMap[5][1]/255*tc[1], 
+				swapMap[5][2]/255*tc[1], 
+				swapMap[5][3]/255);
 			}
 			else if (tc[0] == 1 && tc[1] == 1){
 				return vec4(
-				swapMap[5][0]+(1-swapMap[5][0])*tc[2], 
-				swapMap[5][1]+(1-swapMap[5][1])*tc[2], 
-				swapMap[5][2]+(1-swapMap[5][2])*tc[2], 
-				swapMap[5][3]);
+				swapMap[5][0]/255+(1-swapMap[5][0]/255)*tc[2], 
+				swapMap[5][1]/255+(1-swapMap[5][1]/255)*tc[2], 
+				swapMap[5][2]/255+(1-swapMap[5][2]/255)*tc[2], 
+				swapMap[5][3]/255);
 			}
 		}
 
