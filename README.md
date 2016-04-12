@@ -1,4 +1,6 @@
 # ColorSwap Demo
+https://gfycat.com/AstonishingIckyAmazonparrot
+
 A simple color/palette swapping library for the LÖVE game engine using shaders.
 
 Any image that contains certain reserved color values can have those colors colorSwapped.  If the image contains a shade of a reserved color, then colorSwap will also maintain the shading while swappping.  In other words, the lightness and saturation will carry over from the original image, so long as the reserved hue is maintained.
