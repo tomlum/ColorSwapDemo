@@ -18,10 +18,10 @@ function love.load()
 end
 
 function love.update()
-	for i,colors in ipairs(colors) do
-		colors[1] = colors[1] + 1
-		if colors[1]+.002 >= 255 then
-			colors[1] = 0
+	for i,color in ipairs(colors) do
+		color[1] = color[1] + 1
+		if color[1]+.002 >= 255 then
+			color[1] = 0
 		end
 	end
 	colorSwap.send({

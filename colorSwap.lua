@@ -19,14 +19,14 @@ colorSwap.shader = love.graphics.newShader(
 
 		vec4 tc = Texel(texture, texture_coords);
 		if (tc[3] > 0){
-			if (tc[1] == 0 && tc[2] == 0){
+			if (tc[1] == 0 && tc[2] == 0 && swapMap[0][0]!=-1){
 				return vec4(
 				swapMap[0][0]/255*tc[0], 
 				swapMap[0][1]/255*tc[0], 
 				swapMap[0][2]/255*tc[0], 
 				swapMap[0][3]/255);
 			}
-			else if (tc[0] == 1 && tc[1]-tc[2]<.005 && tc[1]-tc[2]>-.005){
+			else if (tc[0] == 1 && tc[1]-tc[2]<.005 && tc[1]-tc[2]>-.005 && swapMap[0][0]!=-1){
 				return vec4(
 				swapMap[0][0]/255+(1-swapMap[0][0]/255)*tc[1], 
 				swapMap[0][1]/255+(1-swapMap[0][1]/255)*tc[1], 
@@ -34,14 +34,14 @@ colorSwap.shader = love.graphics.newShader(
 				swapMap[0][3]/255);
 			}
 
-			else if (tc[0] <= 0 && tc[2] <= 0){
+			else if (tc[0] <= 0 && tc[2] <= 0 && swapMap[1][0]!=-1){
 				return vec4(
 				swapMap[1][0]/255*tc[1], 
 				swapMap[1][1]/255*tc[1], 
 				swapMap[1][2]/255*tc[1], 
 				swapMap[1][3]/255);
 			}
-			else if (tc[1] == 1 && tc[0]-tc[2]<.005 && tc[0]-tc[2]>-.005){
+			else if (tc[1] == 1 && tc[0]-tc[2]<.005 && tc[0]-tc[2]>-.005 && swapMap[1][0]!=-1){
 				return vec4(
 				swapMap[1][0]/255+(1-swapMap[1][0]/255)*tc[2], 
 				swapMap[1][1]/255+(1-swapMap[1][1]/255)*tc[2], 
@@ -49,14 +49,14 @@ colorSwap.shader = love.graphics.newShader(
 				swapMap[1][3]/255);
 			}
 
-			else if (tc[1] == 0 && tc[0] == 0){
+			else if (tc[1] == 0 && tc[0] == 0 && swapMap[3][0]!=-1){
 				return vec4(
 				swapMap[2][0]/255*tc[2], 
 				swapMap[2][1]/255*tc[2], 
 				swapMap[2][2]/255*tc[2], 
 				swapMap[2][3]/255);
 			}
-			else if (tc[2] == 1 && tc[1]-tc[0]<.005  && tc[1]-tc[0]>-.005){
+			else if (tc[2] == 1 && tc[1]-tc[0]<.005  && tc[1]-tc[0]>-.005 && swapMap[3][0]!=-1){
 				return vec4(
 				swapMap[2][0]/255+(1-swapMap[2][0]/255)*tc[1], 
 				swapMap[2][1]/255+(1-swapMap[2][1]/255)*tc[1], 
@@ -70,14 +70,14 @@ colorSwap.shader = love.graphics.newShader(
 
 
 
-			else if (tc[0] == 0 && tc[1]-tc[2]<.005 && tc[1]-tc[2]>-.005){
+			else if (tc[0] == 0 && tc[1]-tc[2]<.005 && tc[1]-tc[2]>-.005 && swapMap[3][0]!=-1){
 				return vec4(
 				swapMap[3][0]/255*tc[1], 
 				swapMap[3][1]/255*tc[1], 
 				swapMap[3][2]/255*tc[1], 
 				swapMap[3][3]/255);
 			}
-			else if (tc[1] == 1 && tc[2] == 1){
+			else if (tc[1] == 1 && tc[2] == 1 && swapMap[3][0]!=-1){
 				return vec4(
 				swapMap[3][0]/255+(1-swapMap[3][0]/255)*tc[0], 
 				swapMap[3][1]/255+(1-swapMap[3][1]/255)*tc[0], 
@@ -85,14 +85,14 @@ colorSwap.shader = love.graphics.newShader(
 				swapMap[3][3]/255);
 			}
 
-			else if (tc[1] == 0 && tc[0]-tc[2]<.005 && tc[0]-tc[2]>-.005){
+			else if (tc[1] == 0 && tc[0]-tc[2]<.005 && tc[0]-tc[2]>-.005 && swapMap[4][0]!=-1){
 				return vec4(
 				swapMap[4][0]/255*tc[0], 
 				swapMap[4][1]/255*tc[0], 
 				swapMap[4][2]/255*tc[0], 
 				swapMap[4][3]/255);
 			}
-			else if (tc[0] == 1 && tc[2] == 1){
+			else if (tc[0] == 1 && tc[2] == 1 && swapMap[4][0]!=-1){
 				return vec4(
 				swapMap[4][0]/255+(1-swapMap[4][0]/255)*tc[1], 
 				swapMap[4][1]/255+(1-swapMap[4][1]/255)*tc[1], 
@@ -101,14 +101,14 @@ colorSwap.shader = love.graphics.newShader(
 			}
 
 
-			else if (tc[2] == 0 && tc[0]-tc[1]<.005 && tc[0]-tc[1]>-.005){
+			else if (tc[2] == 0 && tc[0]-tc[1]<.005 && tc[0]-tc[1]>-.005 && swapMap[5][0]!=-1){
 				return vec4(
 				swapMap[5][0]/255*tc[1], 
 				swapMap[5][1]/255*tc[1], 
 				swapMap[5][2]/255*tc[1], 
 				swapMap[5][3]/255);
 			}
-			else if (tc[0] == 1 && tc[1] == 1){
+			else if (tc[0] == 1 && tc[1] == 1 && swapMap[5][0]!=-1){
 				return vec4(
 				swapMap[5][0]/255+(1-swapMap[5][0]/255)*tc[2], 
 				swapMap[5][1]/255+(1-swapMap[5][1]/255)*tc[2], 
@@ -131,12 +131,12 @@ colorSwap.shader = love.graphics.newShader(
 --Swaps Green with {1,0,0,1}
 function colorSwap.send(swapMap)
 	colorSwap.shader:send("swapMap", 
-		swapMap[1] or {1,0,0,1}, 
-		swapMap[2] or {0,1,0,1}, 
-		swapMap[3] or {0,0,1,1},
-		swapMap[4] or {0,1,1,1}, 
-		swapMap[5] or {1,0,1,1}, 
-		swapMap[6] or {1,1,0,1}
+		swapMap[1] or {-1,0,0,0}, 
+		swapMap[2] or {-1,0,0,0}, 
+		swapMap[3] or {-1,0,0,0},
+		swapMap[4] or {-1,0,0,0}, 
+		swapMap[5] or {-1,0,0,0}, 
+		swapMap[6] or {-1,0,0,0}
 		)
 end
 
